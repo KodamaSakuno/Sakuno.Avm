@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Sakuno.Avm.Abc.Instructions
@@ -13,5 +13,8 @@ namespace Sakuno.Avm.Abc.Instructions
             DefaultJumpOffset = defaultJumpOffset;
             CaseJumpOffsets = caseJumpOffsets ?? throw new ArgumentNullException(nameof(caseJumpOffsets));
         }
+
+        public override void Accept(IInstructionVisitor visitor) => visitor.Visit(this);
+        public override TResult Accept<TResult>(IInstructionVisitor<TResult> visitor) => visitor.Visit(this);
     }
 }

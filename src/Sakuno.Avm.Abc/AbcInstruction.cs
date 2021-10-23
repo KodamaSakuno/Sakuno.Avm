@@ -10,5 +10,8 @@
         {
             Kind = kind;
         }
+
+        public abstract void Accept(IInstructionVisitor visitor);
+        public abstract TResult Accept<TResult>(IInstructionVisitor<TResult> visitor);
     }
 }
