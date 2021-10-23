@@ -59,11 +59,7 @@ namespace Sakuno.Avm.Abc
             var slotId = reader.ReadU30();
             var typeName = constantPool.GetMultinameOrDefault(reader.ReadU30(), AbcMultiname.Any);
             var valueIndex = reader.ReadU30();
-
-            AbcConstant? value = null;
-
-            if (valueIndex is not 0)
-                value = constantPool.GetConstant(reader.ReadU8<ConstantKind>(), valueIndex);
+            var value = valueIndex is not 0 ? constantPool.GetConstant(reader.ReadU8<ConstantKind>(), valueIndex) : AbcConstant.Undefined;
 
             return kind switch
             {

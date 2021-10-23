@@ -18,7 +18,12 @@ namespace Sakuno.Avm.Abc
                 instances[i] = reader.ReadInstance(constantPool, methods, metadata);
 
             for (var i = 0; i < classes.Length; i++)
-                classes[i] = reader.ReadClass(constantPool, methods, metadata);
+            {
+                var @class = reader.ReadClass(constantPool, methods, metadata);
+                @class.Instance = instances[i];
+
+                classes[i] = @class;
+            }
 
             return (instances, classes);
         }
