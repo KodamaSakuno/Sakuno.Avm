@@ -3,8 +3,12 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="System.IO.Pipelines" Version="5.0.1" />
+    <ProjectReference Include="$(BasePath)src\Sakuno.Avm.Abc.SourceGenerator\Sakuno.Avm.Abc.SourceGenerator.csproj">
+      <OutputItemType>Analyzer</OutputItemType>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
   </ItemGroup>
 
 </Project>
